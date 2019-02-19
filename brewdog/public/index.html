@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Vue BrewDog</title>
+	<script src="./js/bundle.js"></script>
+</head>
+<body>
+
+	<h1>Beer App</h1>
+
+	<div id="app">
+
+<!-- <div v-for = "beer in beers">
+<h2>{{beer.name}}</h2>
+<h3>{{beer.description}}</h3>
+<img v-bind:alt = "beer.name" v-bind:src = "beer.image_url" />
+</div> -->
+
+<label for="beer_select">Select a Beer:</label>
+<select v-on:change = "beerSelect" id = "beer_select" v-model = "selectedBeerIndex" >
+  <option disabled value="">Select a Beer</option>
+  <option v-for="(beer, index) in beers":value="index">{{beer.name}}</option>
+</select>
+
+<div id = "selected_beer" v-if="selectedBeer">
+  <h2> {{selectedBeer.name}} </h2>
+  <h3> Description: {{selectedBeer.description}} </h3>
+  <!-- <img :src="selectedBeer.image_url"/> -->
+	<button v-on:click="addBeerToFavourites">Add Beer to favourites</button>
+</div>
+
+<div id="favourite_beers"> <!-- NEW -->
+  <h2>Favourite Beers</h2>
+  <ul>
+    <li v-for="beer in favouriteBeers">{{beer.name}}</li>
+  </ul>
+</div>
+
+<!-- <div v-for="(beer, index) in favouriteBeers":value="index">
+   <button v-on:click="removeBeerFromFavourites">Remove Beer from favourites</button>
+</div> -->
+
+
+
+	</div>
+
+
+</body>
+</html>
